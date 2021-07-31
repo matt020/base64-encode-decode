@@ -5,27 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>String to Base64</title>
+    <link rel="icon" href="favicon.ico" sizes="any">
     <style>
         body {
             font-family: Arial, Helvetica, sans-serif;
         }
     </style>
-    <link rel="icon" href="favicon.ico" sizes="any">
 </head>
 <body>
-    <h1>String to Base 64</h1>
+    <p>String</p>
     <textarea name="plaintext" id="plaintext" cols="50" rows="10"></textarea>
-    <p id="base64"></p>
-</body>
-
-<script>
-    let plainTextInput = document.getElementById('plaintext');
-    let base64Output = document.getElementById('base64');
-
-    plainTextInput.oninput = convertToBase64;
+    <p>Base64</p>
+    <textarea name="base64" id="base64" cols="50" rows="10" readonly></textarea>
+    <div>
+        <button id="copy">Copy</button>
+    </div>
+    <script>
+        let plainTextInput = document.getElementById('plaintext');
+        let base64Output = document.getElementById('base64');
+        let copyButton = document.getElementById('copy');
     
-    function convertToBase64(e) {
-        base64Output.textContent = btoa(e.target.value);
-    }
-</script>
+        plainTextInput.oninput = convertToBase64;
+        copyButton.addEventListener('click', copyBase64);
+        
+        function convertToBase64(e) {
+            base64Output.value = btoa(e.target.value);
+        }
+
+        function copyBase64() {
+            base64Output.select();
+            document.execCommand('copy');
+        }
+    </script>
+</body>
 </html>
