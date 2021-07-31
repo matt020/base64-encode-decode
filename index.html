@@ -5,37 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>String to Base64</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="icon" href="favicon.ico" sizes="any">
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-        }
-    </style>
 </head>
 <body>
-    <p>String</p>
-    <textarea name="plaintext" id="plaintext" cols="50" rows="10"></textarea>
-    <p>Base64</p>
-    <textarea name="base64" id="base64" cols="50" rows="10" readonly></textarea>
-    <div>
-        <button id="copy">Copy</button>
-    </div>
-    <script>
-        let plainTextInput = document.getElementById('plaintext');
-        let base64Output = document.getElementById('base64');
-        let copyButton = document.getElementById('copy');
-    
-        plainTextInput.oninput = convertToBase64;
-        copyButton.addEventListener('click', copyBase64);
+    <main>
+        <div>
+            <h1 id="mode"></h1>
+            <input type="checkbox" name="checkbox" id="checkbox">
         
-        function convertToBase64(e) {
-            base64Output.value = btoa(e.target.value);
-        }
-
-        function copyBase64() {
-            base64Output.select();
-            document.execCommand('copy');
-        }
-    </script>
+        </div>
+        <textarea name="input" id="input" cols="50" rows="10"></textarea>
+        <br>
+        <textarea name="output" id="output" cols="50" rows="10" readonly></textarea>
+        <br>
+        <button id="copy">Copy to clipboard</button>
+    </main>
+    <script src="base64.js"></script>
 </body>
 </html>
